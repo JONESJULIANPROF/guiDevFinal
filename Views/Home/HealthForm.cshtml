@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h1 class="display-4" >Health Information Form:</h1>
+<div class="form-group">
+    <form class="form-group">
+        <label for="nameField">Name:</label>
+        <input class="input-group-text" type="text" id="nameField" />
+        <label for="startingWeightField">Starting Weight (in Lbs.):</label>
+        <input class="input-group-text" type="number" id="startingWeightField" min="15" max="1000" />
+        <label for="goalWeightField">Goal Weight (in Lbs.):</label>
+        <input class="input-group-text" type="number" id="goalWeightField" min="15" max="1000" />
+        <label for="heightField">Height (in In.):</label>
+        <input class="input-group-text" type="number" id="heightField" min="12" max="96" />
+        <p>Gender:</p>
+        <input type="radio" id="maleRadio" name="gender" value="male">
+
+        <label for="maleRadio">Male</label><br>
+        <input type="radio" id="femaleRadio" name="gender" value="female">
+        <label for="femaleRadio">Female</label><br>
+        <input type="radio" id="otherRadio" name="gender" value="other">
+        <label for="otherRadio">Other</label>
+        <br />
+
+        <label for="activityLevelField">Activity Level:</label>
+
+        <select name="activityLevelField" id="activityLevelField">
+            <option value="sedentary">Sedentary</option>
+            <option value="light">Light</option>
+            <option value="moderate">Moderate</option>
+            <option value="vigorous">Vigorous</option>
+            <option value="extreme">Extreme</option>
+        </select>
+        <br/>
+        <label for="birthdayField">Birthday: </label>
+        <input type="date" id="birthdayField" />
+
+
+
+    </form>
+</div>
