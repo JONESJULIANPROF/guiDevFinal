@@ -29,8 +29,32 @@ namespace FianlGUI.Controllers
         }
         public IActionResult HealthForm()
         {
+            var model = new FatTrack();
             return View();
         }
+
+        
+
+        [HttpPost]
+        public IActionResult HeathForm(FatTrack tracking)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                return View("information", tracking);
+            }
+            else
+            {
+                var model = new FatTrack();
+                return View();
+            }
+        }
+        public IActionResult Information()
+        {
+            return View();
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

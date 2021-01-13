@@ -354,6 +354,11 @@ namespace FianlGUI.Models
 
                 entity.Property(e => e.Birthday).HasColumnType("date");
 
+                entity.Property(e => e.Bmr)
+                    .HasColumnName("BMR")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Email)
                     .HasMaxLength(75)
                     .IsUnicode(false);
@@ -369,6 +374,8 @@ namespace FianlGUI.Models
                 entity.Property(e => e.LastN)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.NumOcal).HasColumnName("NumOCal");
             });
 
             modelBuilder.Entity<Foodl>(entity =>

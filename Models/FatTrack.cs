@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 
 namespace FianlGUI.Models
@@ -17,5 +18,9 @@ namespace FianlGUI.Models
         public string ActivityLevel { get; set; }
         public DateTime? Birthday { get; set; }
         public int? Age { get; set; }
+        public int? NumOcal { get; set; }
+        public string Bmr { get; set; }
+
+        
     }
 }

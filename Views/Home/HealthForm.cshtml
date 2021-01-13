@@ -1,4 +1,5 @@
-﻿@*
+﻿@model FianlGUI.Models.FatTrack
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -6,40 +7,43 @@
 
 
 <h1 class="display-4" >Health Information Form:</h1>
-<div class="form-group">
-    <form class="form-group">
-        <label for="nameField">Name:</label>
-        <input class="input-group-text" type="text" id="nameField" />
-        <label for="startingWeightField">Starting Weight (in Lbs.):</label>
-        <input class="input-group-text" type="number" id="startingWeightField" min="15" max="1000" />
-        <label for="goalWeightField">Goal Weight (in Lbs.):</label>
-        <input class="input-group-text" type="number" id="goalWeightField" min="15" max="1000" />
-        <label for="heightField">Height (in In.):</label>
-        <input class="input-group-text" type="number" id="heightField" min="12" max="96" />
-        <p>Gender:</p>
-        <input type="radio" id="maleRadio" name="gender" value="male">
+<form name="FatTrack" method="post" asp-action="HealthForm">
+    <div class="form-group">
+        <label asp-for="FirstN">First Name:</label>
+        <input class="form-control" asp-for="FirstN" id="FirstN" placeholder="First Name" />
+        <label asp-for="LastN">Last Name:</label>
+        <input class="form-control" asp-for="LastN" id="LastN" placeholder="Last Name" />
+        <label asp-for="Email">Email:</label>
+        <input class="form-control" asp-for="Email" id="email" placeholder="Email" />
+        <label asp-for="StartingW">Starting Weight (in Lbs.):</label>
+        <input class="form-control" asp-for="StartingW" id="StartingW" placeholder="0" min="15" max="1000" />
+        <label asp-for="DesiredW">Goal Weight (in Lbs.):</label>
+        <input class="form-control" asp-for="DesiredW" placeholder="Desired Weight" id="DesiredW" min="15" max="1000" />
+        <label asp-for="HeightInches">Height (in In.):</label>
+        <input class="form-control" asp-for="HeightInches" id="HeightInches" min="12" max="96" />
+        <br />
+        <label asp-for="Gender">Gender:</label>
 
-        <label for="maleRadio">Male</label><br>
-        <input type="radio" id="femaleRadio" name="gender" value="female">
-        <label for="femaleRadio">Female</label><br>
-        <input type="radio" id="otherRadio" name="gender" value="other">
-        <label for="otherRadio">Other</label>
+        <select name="Gender" id="Gender" asp-for="Gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
         <br />
 
         <label for="activityLevelField">Activity Level:</label>
 
-        <select name="activityLevelField" id="activityLevelField">
+        <select name="activityLevelField" id="activityLevelField" asp-for="ActivityLevel">
             <option value="sedentary">Sedentary</option>
             <option value="light">Light</option>
             <option value="moderate">Moderate</option>
             <option value="vigorous">Vigorous</option>
             <option value="extreme">Extreme</option>
         </select>
-        <br/>
-        <label for="birthdayField">Birthday: </label>
-        <input type="date" id="birthdayField" />
+        <br />
+        <label asp-for="Birthday">Birthday: </label>
+        <input type="date" id="birthdayField" asp-for="Birthday" />
 
+    </div>
+    <button type="submit">Submit Info</button>
+</form>
 
-
-    </form>
-</div>
