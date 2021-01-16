@@ -30,6 +30,7 @@ namespace FianlGUI.Controllers
         public IActionResult HealthForm()
         {
             var model = new FatTrack();
+            ViewBag.ActivityLevel = model.ActivityLevel;
             return View();
         }
 
@@ -40,15 +41,17 @@ namespace FianlGUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                return View("information", tracking);
+                return View("Information", tracking);
             }
             else
             {
                 var model = new FatTrack();
+                ViewBag.ActivityLevel = model.ActivityLevel;
                 return View();
+
             }
         }
+        
         public IActionResult Information()
         {
             return View();

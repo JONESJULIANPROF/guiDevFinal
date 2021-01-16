@@ -23,27 +23,30 @@
         <input class="form-control" asp-for="HeightInches" id="HeightInches" min="12" max="96" />
         <br />
         <label asp-for="Gender">Gender:</label>
+        
+        <input class="form-control" asp-for="Gender" id="Gender" placeholder="Gender" />
 
-        <select name="Gender" id="Gender" asp-for="Gender">
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-        </select>
         <br />
 
         <label for="activityLevelField">Activity Level:</label>
 
-        <select name="activityLevelField" id="activityLevelField" asp-for="ActivityLevel">
-            <option value="sedentary">Sedentary</option>
-            <option value="light">Light</option>
-            <option value="moderate">Moderate</option>
-            <option value="vigorous">Vigorous</option>
-            <option value="extreme">Extreme</option>
+        <label asp-for="ActivityLevel">Pick an activity level:</label>
+        <select asp-for="ActivityLevel" class="form-control">
+            <option value="">Pick One</option>
+            @foreach (var pow2 in ViewBag.ActivityLevel)
+            {
+                <option value="@pow2.Value">@pow2.Text</option>
+            }
         </select>
         <br />
-        <label asp-for="Birthday">Birthday: </label>
-        <input type="date" id="birthdayField" asp-for="Birthday" />
+        <div class="form-group">
+            <label asp-for="Birthday">Date of Birth:</label>
+            <input asp-for="Birthday" class="form-control" placeholder="xx/xx/xxxx" />
+            <!--<span class="alert-danger" asp-validation-for="Birthday"></span>-->
+
+        </div>
 
     </div>
-    <button type="submit">Submit Info</button>
+    <button class="btn btn-primary" type="submit">Submit Info</button>
 </form>
 
