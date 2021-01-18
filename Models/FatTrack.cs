@@ -17,7 +17,9 @@ namespace FianlGUI.Models
         public int? DesiredW { get; set; }
         public int? HeightInches { get; set; }
         public string Gender { get; set; }
-        public List<SelectListItem> ActivityLevel { get; set; } = new List<SelectListItem>
+
+        public string ActivityLevel { get; set; }
+        public List<SelectListItem> ActivityLevelList { get; set; } = new List<SelectListItem>
         {
             new SelectListItem{Value="Sedentary", Text="Sedentary"},
             new SelectListItem{Value="Light", Text="Light"},

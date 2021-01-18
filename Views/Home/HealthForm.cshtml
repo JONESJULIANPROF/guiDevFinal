@@ -3,6 +3,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "End my Suffering";
 }
 
 
@@ -10,48 +11,63 @@
 <form name="FatTrack" method="post" asp-action="HealthForm">
     <div class="form-group">
         <label asp-for="FirstN">First Name:</label>
-        <input class="form-control" asp-for="FirstN" id="FirstN" placeholder="First Name" />
-        <br>
+        <input asp-for="FirstN" class="form-control"  id="FirstN" placeholder="First Name" />
+    </div>
+    <br>
+    <div class="form-group">
         <label asp-for="LastN">Last Name:</label>
         <input class="form-control" asp-for="LastN" id="LastN" placeholder="Last Name" />
-        <br>
+    </div>
+    <br>
+    <div class="form-group">
         <label asp-for="Email">Email:</label>
         <input class="form-control" asp-for="Email" id="email" placeholder="Email" />
-        <br>
+    </div>
+    <br>
+    <div class="form-group">
         <label asp-for="StartingW">Starting Weight (in Lbs.):</label>
+
         <input class="form-control" asp-for="StartingW" id="StartingW" placeholder="0" min="15" max="1000" />
-        <br>
+    </div>
+    <br>
+    <div class="form-group">
         <label asp-for="DesiredW">Goal Weight (in Lbs.):</label>
         <input class="form-control" asp-for="DesiredW" placeholder="0" id="DesiredW" min="15" max="1000" />
-        <br>
+    </div>
+    <br>
+    <div class="form-group">
         <label asp-for="HeightInches">Height (in In.):</label>
         <input class="form-control" asp-for="HeightInches" placeholder="0" id="HeightInches" min="12" max="96" />
-        <br>
+    </div>
+    <br>
+    <div class="form-group">
         <label asp-for="Gender">Gender:</label>
 
         <input class="form-control" asp-for="Gender" id="Gender" placeholder="Gender" />
-
-        <br />
-
+    </div>
+    <br />
+    <div class="form-group">
         <label for="activityLevelField">Activity Level:</label>
 
         <label asp-for="ActivityLevel">Pick an activity level:</label>
         <select asp-for="ActivityLevel" class="form-control">
             <option value="">Pick One</option>
-            @foreach (var pow2 in ViewBag.ActivityLevel)
+            @foreach (var pow2 in ViewBag.ActivityLevelList)
             {
                 <option value="@pow2.Value">@pow2.Text</option>
             }
         </select>
+
+        </div>
         <br />
         <div class="form-group">
             <label asp-for="Birthday">Date of Birth:</label>
             <input asp-for="Birthday" class="form-control" placeholder="xx/xx/xxxx" />
-            <!--<span class="alert-danger" asp-validation-for="Birthday"></span>-->
+            <span class="alert-danger" asp-validation-for="Birthday"></span>
 
         </div>
 
-    </div>
-    <button class="btn btn-primary" type="submit">Submit Info</button>
+
+        <button  type="submit" class="btn btn-primary">Submit Info</button>
 </form>
 

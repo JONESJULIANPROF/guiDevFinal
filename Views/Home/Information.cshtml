@@ -1,4 +1,4 @@
-﻿@model FianlGUI.Models.FatTrack
+﻿@model IEnumerable<FatTrack>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -26,20 +26,20 @@
     </thead>
 
     <tbody>
-        @{
-            if (Model != null)
-            {
+        @foreach(var mod in Model)
+        {
+            
                 <tr>
-                    <td>@Model.FirstN</td>
-                    <td>@Model.Email</td>
-                    <td>@Model.StartingW</td>
+                    <td>@mod.FirstN</td>
+                    <td>@mod.Email</td>
+                    <td>@mod.StartingW</td>
 
-                    <td>@Model.DesiredW</td>
-                    <td>@Model.HeightInches</td>
-                    <td>@Model.Gender</td>
-                    <td>@Model.ActivityLevel</td>
-                    <td>@Model.Birthday</td>
-                    <td>@Model.Age</td>
+                    <td>@mod.DesiredW</td>
+                    <td>@mod.HeightInches</td>
+                    <td>@mod.Gender</td>
+                    <td>@mod.ActivityLevel</td>
+                    <td>@mod.Birthday</td>
+                    
 
                 </tr>
 
@@ -47,7 +47,7 @@
 
 
 
-        }
+        
 
 
     </tbody>

@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace FianlGUI.Controllers
 {
     public class HomeController : Controller
@@ -31,27 +32,30 @@ namespace FianlGUI.Controllers
         {
             var model = new FatTrack();
             
-            ViewBag.ActivityLevel = model.ActivityLevel;
+            ViewBag.ActivityLevelList = model.ActivityLevelList;
+           
             return View();
         }
 
         
 
         [HttpPost]
-        public IActionResult HeathForm(FatTrack tracking)
+        public IActionResult HealthForm(FatTrack tracking)
         {
             var model = new FatTrack();
-            model = tracking;
-            return View("Information", model);
+            ViewBag.ActivityLevelList = model.ActivityLevelList;
+                CompleteInfo.addModel(tracking);
+
+                return View();
+            
+            
+           
         }
         
         public IActionResult Information()
         {
-            var model = new FatTrack();
-            //model.FirstN = "Test";
-            //model.LastN = "Test";
-            //model.Email = "Test";
-            return View();
+            
+            return View(CompleteInfo.ListModels);
         }
 
 
