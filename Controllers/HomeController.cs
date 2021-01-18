@@ -30,6 +30,7 @@ namespace FianlGUI.Controllers
         public IActionResult HealthForm()
         {
             var model = new FatTrack();
+            
             ViewBag.ActivityLevel = model.ActivityLevel;
             return View();
         }
@@ -39,21 +40,17 @@ namespace FianlGUI.Controllers
         [HttpPost]
         public IActionResult HeathForm(FatTrack tracking)
         {
-            if (ModelState.IsValid)
-            {
-                return View("Information", tracking);
-            }
-            else
-            {
-                var model = new FatTrack();
-                ViewBag.ActivityLevel = model.ActivityLevel;
-                return View();
-
-            }
+            var model = new FatTrack();
+            model = tracking;
+            return View("Information", model);
         }
         
         public IActionResult Information()
         {
+            var model = new FatTrack();
+            //model.FirstN = "Test";
+            //model.LastN = "Test";
+            //model.Email = "Test";
             return View();
         }
 
