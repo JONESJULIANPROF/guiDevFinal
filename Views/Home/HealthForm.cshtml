@@ -6,24 +6,29 @@
 }
 
 
-<h1 class="display-4" >Health Information Form:</h1>
+<h1 class="display-4 text-center">Health Information Form:</h1>
 <form name="FatTrack" method="post" asp-action="HealthForm">
     <div class="form-group">
         <label asp-for="FirstN">First Name:</label>
         <input class="form-control" asp-for="FirstN" id="FirstN" placeholder="First Name" />
+        <br>
         <label asp-for="LastN">Last Name:</label>
         <input class="form-control" asp-for="LastN" id="LastN" placeholder="Last Name" />
+        <br>
         <label asp-for="Email">Email:</label>
         <input class="form-control" asp-for="Email" id="email" placeholder="Email" />
+        <br>
         <label asp-for="StartingW">Starting Weight (in Lbs.):</label>
         <input class="form-control" asp-for="StartingW" id="StartingW" placeholder="0" min="15" max="1000" />
+        <br>
         <label asp-for="DesiredW">Goal Weight (in Lbs.):</label>
-        <input class="form-control" asp-for="DesiredW" placeholder="Desired Weight" id="DesiredW" min="15" max="1000" />
+        <input class="form-control" asp-for="DesiredW" placeholder="0" id="DesiredW" min="15" max="1000" />
+        <br>
         <label asp-for="HeightInches">Height (in In.):</label>
-        <input class="form-control" asp-for="HeightInches" id="HeightInches" min="12" max="96" />
-        <br />
+        <input class="form-control" asp-for="HeightInches" placeholder="0" id="HeightInches" min="12" max="96" />
+        <br>
         <label asp-for="Gender">Gender:</label>
-        
+
         <input class="form-control" asp-for="Gender" id="Gender" placeholder="Gender" />
 
         <br />
