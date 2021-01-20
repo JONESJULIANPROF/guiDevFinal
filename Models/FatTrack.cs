@@ -12,11 +12,16 @@ namespace FianlGUI.Models
         public string FirstN { get; set; }
         public string LastN { get; set; }
         public string Email { get; set; }
-        public int? StartingW { get; set; }
-        public int? CurrentW { get; set; }
-        public int? DesiredW { get; set; }
-        public int? HeightInches { get; set; }
+        public double StartingW { get; set; }
+        public double CurrentW { get; set; }
+        public double DesiredW { get; set; }
+        public double HeightInches { get; set; }
         public string Gender { get; set; }
+        public List<SelectListItem> GenderList { get; set; } = new List<SelectListItem>
+        {
+            new SelectListItem{Value="Male",Text="Male"},
+            new SelectListItem{Value="Female",Text="Female"}   
+        };
 
         public string ActivityLevel { get; set; }
         public List<SelectListItem> ActivityLevelList { get; set; } = new List<SelectListItem>
@@ -32,13 +37,13 @@ namespace FianlGUI.Models
 
         };
         public DateTime Birthday { get; set; }
-        public int? Age
+        public int Age
         {
             get;
             set;
         }
-        public int? NumOcal { get; set; }
-        public string Bmr { get; set; }
+        public double NumOcal { get; set; }
+        public double Bmr { get; set; }
         
         public double FoodCalories
         {

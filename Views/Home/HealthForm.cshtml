@@ -11,7 +11,7 @@
 <form name="FatTrack" method="post" asp-action="HealthForm">
     <div class="form-group">
         <label asp-for="FirstN">First Name:</label>
-        <input asp-for="FirstN" class="form-control"  id="FirstN" placeholder="First Name" />
+        <input asp-for="FirstN" class="form-control" id="FirstN" placeholder="First Name" />
     </div>
     <br>
     <div class="form-group">
@@ -29,7 +29,14 @@
 
         <input class="form-control" asp-for="StartingW" id="StartingW" placeholder="0" min="15" max="1000" />
     </div>
+
     <br>
+    <div class="form-group">
+        <label asp-for="CurrentW">Current Weight (in Lbs.):</label>
+
+        <input class="form-control" asp-for="CurrentW" id="StartingW" placeholder="0" min="15" max="1000" />
+    </div>
+    <br />
     <div class="form-group">
         <label asp-for="DesiredW">Goal Weight (in Lbs.):</label>
         <input class="form-control" asp-for="DesiredW" placeholder="0" id="DesiredW" min="15" max="1000" />
@@ -41,9 +48,17 @@
     </div>
     <br>
     <div class="form-group">
-        <label asp-for="Gender">Gender:</label>
+        <label for="genderField">Pick a Gender</label>
 
-        <input class="form-control" asp-for="Gender" id="Gender" placeholder="Gender" />
+        <label asp-for="Gender">Gender:</label>
+        <select asp-for="Gender" class="form-control">
+            <option value="">Pick One</option>
+            @foreach (var gen in ViewBag.GenderList)
+            {
+                <option value="@gen.Value">@gen.Text</option>
+            }
+        </select>
+
     </div>
     <br />
     <div class="form-group">
@@ -58,16 +73,16 @@
             }
         </select>
 
-        </div>
-        <br />
-        <div class="form-group">
-            <label asp-for="Birthday">Date of Birth:</label>
-            <input asp-for="Birthday" class="form-control" placeholder="xx/xx/xxxx" />
-            <span class="alert-danger" asp-validation-for="Birthday"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <label asp-for="Birthday">Date of Birth:</label>
+        <input asp-for="Birthday" class="form-control" placeholder="xx/xx/xxxx" />
+        <span class="alert-danger" asp-validation-for="Birthday"></span>
 
-        </div>
+    </div>
 
 
-        <button  type="submit" class="btn btn-primary">Submit Info</button>
+    <button type="submit" class="btn btn-primary">Submit Info</button>
 </form>
 

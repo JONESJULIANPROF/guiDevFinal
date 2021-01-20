@@ -13,7 +13,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Starting Weight</th>
-            @*<th>Current Weight</th>*@
+            <th>Current Weight</th>
             <th>Desired Weight</th>
             <th>Height</th>
             <th>Gender</th>
@@ -39,12 +39,12 @@
 
             mod.Age = age;
 
-            if (mod.Gender == "M")
+            if (mod.Gender == "Male")
             {
-                double bmr = Double.Parse(mod.Bmr);
-                bmr = 66 + (6.3 * mod.CurrentW) + (12.9 * mod.HeightInches) - (6.8 * mod.Age);
+
+                mod.Bmr = 66 + (6.3 * mod.CurrentW) + (12.9 * mod.HeightInches) - (6.8 * mod.Age);
             }
-            else if (@mod.Gender == "F")
+            else if (@mod.Gender == "Female")
             {
                 mod.Bmr = 655 + (4.3 * mod.CurrentW) + (4.7 * mod.HeightInches) - (4.7 * mod.Age);
             }
@@ -55,6 +55,31 @@
 
 
 
+            if (mod.ActivityLevel == "Sedentary")
+            {
+                mod.NumOcal = mod.Bmr * 1.2;
+            }
+            else if (mod.ActivityLevel == "Light")
+            {
+                mod.NumOcal = mod.Bmr * 1.375;
+            }
+            else if (mod.ActivityLevel == "Moderate")
+            {
+                mod.NumOcal = mod.Bmr * 1.55;
+            }
+            else if (mod.ActivityLevel == "Vigorous")
+            {
+                mod.NumOcal = mod.Bmr * 1.725;
+            }
+            else if (mod.ActivityLevel == "Extreme")
+            {
+                mod.NumOcal = mod.Bmr * 1.9;
+            }
+            else
+            {
+                mod.NumOcal = 0;
+            }
+            
 
 
 
@@ -63,25 +88,24 @@
 
 
 
-
-            <tr>
-                <td>@mod.FirstN</td>
-                <td>@mod.Email</td>
-                <td>@mod.StartingW</td>
-                
-                <td>@mod.DesiredW</td>
-                <td>@mod.HeightInches</td>
-                <td>@mod.Gender</td>
-                <td>@mod.ActivityLevel</td>
-                <td>@mod.Birthday</td>
-                <td>@mod.Age</td>
-                @* BMR *@
-
-                @* Calories Needed *@
-                
+        <tr>
+            <td>@mod.FirstN @mod.LastN</td>
+            <td>@mod.Email</td>
+            <td>@mod.StartingW</td>
+            <td>@mod.CurrentW</td>
+            <td>@mod.DesiredW</td>
+            <td>@mod.HeightInches</td>
+            <td>@mod.Gender</td>
+            <td>@mod.ActivityLevel</td>
+            <td>@mod.Birthday</td>
+            <td>@mod.Age</td>
+            <td>@mod.Bmr</td>
+            <td>@mod.NumOcal</td>
 
 
-            </tr>
+
+
+        </tr>
 
         }
 
