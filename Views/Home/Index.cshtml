@@ -13,30 +13,7 @@
 
     
     
-    <div class="card text-white bg-primary mb-3" >
-        <div class="card-body">
-            <form name="FoodEntry" method="post" asp-action="Index">
-                <div class="form-group">
-                    @{
-                        if (Model != null)
-                        {
-                            <h1 class="display-4">@Model.FoodCalories</h1>
-                        }
-
-                    }
-
-
-                    <label asp-for="FoodCalories">Food:</label>
-                    <input class="form-control" asp-for="FoodCalories" id="FoodCalories" placeholder="FoodName" />
-
-
-                </div>
-                <button class="btn btn-secondary" type="submit">Submit Food</button>
-            </form>
-        </div>
-    </div>
-
-        
+   
 
 
 
