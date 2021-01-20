@@ -4,6 +4,7 @@
 *@
 @{
    
+
 }
 <h1>Your Info</h1>
 <table class="table">
@@ -12,7 +13,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Starting Weight</th>
-            <th>Current Weight</th>
+            @*<th>Current Weight</th>*@
             <th>Desired Weight</th>
             <th>Height</th>
             <th>Gender</th>
@@ -26,28 +27,68 @@
     </thead>
 
     <tbody>
-        @foreach(var mod in Model)
+        @foreach (var mod in Model)
         {
-            
-                <tr>
-                    <td>@mod.FirstN</td>
-                    <td>@mod.Email</td>
-                    <td>@mod.StartingW</td>
 
-                    <td>@mod.DesiredW</td>
-                    <td>@mod.HeightInches</td>
-                    <td>@mod.Gender</td>
-                    <td>@mod.ActivityLevel</td>
-                    <td>@mod.Birthday</td>
-                    
+            var Today = DateTime.Today;
+            //Today.ToString()
 
-                </tr>
+            var Birthday = mod.Birthday;
+            Int32 age;
+            age = Today.Year - Birthday.Year;
 
+            mod.Age = age;
+
+            if (mod.Gender == "M")
+            {
+                double bmr = Double.Parse(mod.Bmr);
+                bmr = 66 + (6.3 * mod.CurrentW) + (12.9 * mod.HeightInches) - (6.8 * mod.Age);
+            }
+            else if (@mod.Gender == "F")
+            {
+                mod.Bmr = 655 + (4.3 * mod.CurrentW) + (4.7 * mod.HeightInches) - (4.7 * mod.Age);
+            }
+            else
+            {
+                mod.Bmr = 0;
             }
 
 
 
-        
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td>@mod.FirstN</td>
+                <td>@mod.Email</td>
+                <td>@mod.StartingW</td>
+                
+                <td>@mod.DesiredW</td>
+                <td>@mod.HeightInches</td>
+                <td>@mod.Gender</td>
+                <td>@mod.ActivityLevel</td>
+                <td>@mod.Birthday</td>
+                <td>@mod.Age</td>
+                @* BMR *@
+
+                @* Calories Needed *@
+                
+
+
+            </tr>
+
+        }
+
+        }
+
+
+
 
 
     </tbody>

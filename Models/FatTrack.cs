@@ -31,8 +31,12 @@ namespace FianlGUI.Models
 
 
         };
-        public DateTime? Birthday { get; set; }
-        public int? Age { get; set; }
+        public DateTime Birthday { get; set; }
+        public int? Age
+        {
+            get;
+            set;
+        }
         public int? NumOcal { get; set; }
         public string Bmr { get; set; }
         
