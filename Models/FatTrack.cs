@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.Serialization;
 namespace FianlGUI.Models
 {
     public partial class FatTrack
@@ -52,7 +53,23 @@ namespace FianlGUI.Models
 
 
 
+        [DataContract]
+        public class DataPoint
+        {
+            public DataPoint(string label, double y)
+            {
+                this.Label = label;
+                this.Y = y;
+            }
 
+
+            [DataMember(Name = "label")]
+            public string Label = "";
+
+
+            [DataMember(Name = "y")]
+            public Nullable<double> Y = null;
+        }
 
 
     }
