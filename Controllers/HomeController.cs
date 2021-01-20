@@ -33,6 +33,7 @@ namespace FianlGUI.Controllers
             var model = new FatTrack();
             
             ViewBag.ActivityLevelList = model.ActivityLevelList;
+            ViewBag.GenderList = model.GenderList;
            
             return View();
         }
@@ -44,7 +45,8 @@ namespace FianlGUI.Controllers
         {
             var model = new FatTrack();
             ViewBag.ActivityLevelList = model.ActivityLevelList;
-                CompleteInfo.addModel(tracking);
+            ViewBag.GenderList = model.GenderList;
+            CompleteInfo.addModel(tracking);
 
                 return View();
             

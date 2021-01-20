@@ -3,7 +3,8 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-   
+
+
 }
 <h1>Your Info</h1>
 <table class="table">
@@ -26,31 +27,150 @@
     </thead>
 
     <tbody>
-        @foreach(var mod in Model)
+        @foreach (var mod in Model)
         {
-            
-                <tr>
-                    <td>@mod.FirstN</td>
-                    <td>@mod.Email</td>
-                    <td>@mod.StartingW</td>
 
-                    <td>@mod.DesiredW</td>
-                    <td>@mod.HeightInches</td>
-                    <td>@mod.Gender</td>
-                    <td>@mod.ActivityLevel</td>
-                    <td>@mod.Birthday</td>
-                    
+            var Today = DateTime.Today;
+            //Today.ToString()
 
-                </tr>
+            var Birthday = mod.Birthday;
+            Int32 age;
+            age = Today.Year - Birthday.Year;
 
+            mod.Age = age;
+
+            if (mod.Gender == "Male")
+            {
+
+                mod.Bmr = 66 + (6.3 * mod.CurrentW) + (12.9 * mod.HeightInches) - (6.8 * mod.Age);
+            }
+            else if (@mod.Gender == "Female")
+            {
+                mod.Bmr = 655 + (4.3 * mod.CurrentW) + (4.7 * mod.HeightInches) - (4.7 * mod.Age);
+            }
+            else
+            {
+                mod.Bmr = 0;
             }
 
 
 
-        
+            if (mod.ActivityLevel == "Sedentary")
+            {
+                mod.NumOcal = mod.Bmr * 1.2;
+            }
+            else if (mod.ActivityLevel == "Light")
+            {
+                mod.NumOcal = mod.Bmr * 1.375;
+            }
+            else if (mod.ActivityLevel == "Moderate")
+            {
+                mod.NumOcal = mod.Bmr * 1.55;
+            }
+            else if (mod.ActivityLevel == "Vigorous")
+            {
+                mod.NumOcal = mod.Bmr * 1.725;
+            }
+            else if (mod.ActivityLevel == "Extreme")
+            {
+                mod.NumOcal = mod.Bmr * 1.9;
+            }
+            else
+            {
+                mod.NumOcal = 0;
+            }
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td>@mod.FirstN @mod.LastN</td>
+                <td>@mod.Email</td>
+                <td>@mod.StartingW</td>
+                <td>@mod.CurrentW</td>
+                <td>@mod.DesiredW</td>
+                <td>@mod.HeightInches</td>
+                <td>@mod.Gender</td>
+                <td>@mod.ActivityLevel</td>
+                <td>@mod.Birthday</td>
+                <td>@mod.Age</td>
+                <td>@mod.Bmr</td>
+                <td>@mod.NumOcal</td>
+
+
+
+
+            </tr>
+
+        }
+
+
+
+
+
 
 
     </tbody>
 
 </table>
 
+<script src="~/js/Chart.js">
+</script>
+<canvas id="myChart" width="400" height="400"></canvas>
+
+@foreach (var mod in Model)
+
+
+
+{
+    var weightLost = mod.StartingW - mod.CurrentW;
+
+
+
+
+    <script>
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Weight Lost', 'Calories Left'],
+                datasets: [{
+                    label: '@mod.FirstN',
+                    data: [@weightLost, @mod.NumOcal],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+}

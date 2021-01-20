@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     @model FianlGUI.Models.FatTrack
+    
 }
 
 <div class="text-center">
@@ -10,28 +11,34 @@
     <br />
     <br />
 
-
     
-    <form name="FoodEntry" method="post" asp-action="Index">
-        <div class="form-group">
-            @{
-                if (Model != null)
-                {
-                    <h1 class="display-4">@Model.FoodCalories</h1>
-                }
+    
+    <div class="card text-white bg-primary mb-3" >
+        <div class="card-body">
+            <form name="FoodEntry" method="post" asp-action="Index">
+                <div class="form-group">
+                    @{
+                        if (Model != null)
+                        {
+                            <h1 class="display-4">@Model.FoodCalories</h1>
+                        }
 
-            }
-            
-
-            <label asp-for="FoodCalories">Food:</label>
-            <input class="form-control" asp-for="FoodCalories" id="FoodCalories" placeholder="FoodName" />
+                    }
 
 
+                    <label asp-for="FoodCalories">Food:</label>
+                    <input class="form-control" asp-for="FoodCalories" id="FoodCalories" placeholder="FoodName" />
+
+
+                </div>
+                <button class="btn btn-secondary" type="submit">Submit Food</button>
+            </form>
         </div>
-        <button class="btn btn-primary" type="submit">Submit Food</button>
-    </form>
+    </div>
+
+        
 
 
 
-    <!--<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
-</div>
+        <!--<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>-->
+    </div>
